@@ -1,6 +1,5 @@
 const express = require("express")
 const dotenv = require("dotenv")
-const bodyParser = require("body-parser")
 
 const connect = require("./utils/service")
 const userRoutes = require("./routes/user")
@@ -12,7 +11,8 @@ app.set("view engine","ejs")
 app.set("views","views")
 
 //middlewares
-app.use(bodyParser.json()) //can use express.json() instead?
+app.use(express.static(__dirname+"public"))
+app.use(express.json())
 
 app.use("/api",userRoutes)
 
